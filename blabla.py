@@ -126,7 +126,8 @@ def editcountrylog():
             else:
                 fcontents.append(line)
     with open(countrylog, mode="w", encoding="UTF-8") as f:
-        f.write(*data, sep="")
+        for line in fcontents:
+            f.write(f"{line} \n")
 
 
 # intro subroutine
