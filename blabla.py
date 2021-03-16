@@ -76,6 +76,7 @@ def searchcountrylog():
 #user can edit stats for countries in countryLog.txt
 def editcountrylog():
     print("Now printing countries currently available for edits: ")
+    fcontents = []
     sleep(2)
     viewcountrylog()
     select = input("Please enter the name of the country you would like to edit: ")
@@ -86,8 +87,10 @@ def editcountrylog():
                 print(f"Country selected: {data[0]}, Current Data:\n Team Captain: {data[1]} \n Medals: {data[2]} Gold{data[3]} Silver {data[4]} Bronze \n Total Medals: {data[5]}")
                 editselect = "y"
                 while editselect != "n":
-                    editselect = int(input(f"Available fields to edit: \n1: {"Country Name":>20}\n2: {"Team Captain":>20}\n3: {"Gold Medals":>20}\n4: {"Silver Medals":>20}\n5: {"Bronze Medals":>20}"))                    
-
+                    editselect = int(input(f"Available fields to edit: \n1: {"Country Name":>20}\n2: {"Team Captain":>20}\n3: {"Gold Medals":>20}\n4: {"Silver Medals":>20}\n5: {"Bronze Medals":>20}"))- 1                    
+            else:
+                line.append(fcontents)
+    with open()
 intro subroutine
 def intro():
     repeat = "y"
