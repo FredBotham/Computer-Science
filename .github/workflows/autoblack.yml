@@ -8,7 +8,7 @@ jobs:
       - name: Set up Python 3.9.2
         uses: actions/setup-python@v1
         with:
-          ref: ${{ github.head_ref }}
+            ref: ${{ github.head_ref }}
        - name: Install Black
         run: pip install black
       - name: Run black --check .
