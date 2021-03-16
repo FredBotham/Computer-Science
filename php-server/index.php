@@ -1,1 +1,1 @@
-file_put_contents('/tmp/payload.log', json_encode($_POST/payload));
+file_put_contents("C:/Users/Fredd/Documents/Computer Science/php-server/payload.log", json_encode($_POST/payload));
