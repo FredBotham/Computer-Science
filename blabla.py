@@ -80,7 +80,7 @@ def editcountrylog():
     sleep(2)
     viewcountrylog()
     select = input("Please enter the name of the country you would like to edit: ")
-    with open(countrylog, mode="r") as f:
+    with open(countrylog, mode="r", encoding="UTF-8") as f:
         for line in f:
             data = line.split('|')
             if data[0] == select:
@@ -89,8 +89,8 @@ def editcountrylog():
                 while editselect != "n":
                     editselect = int(input(f"Available fields to edit: \n1: {"Country Name":>20}\n2: {"Team Captain":>20}\n3: {"Gold Medals":>20}\n4: {"Silver Medals":>20}\n5: {"Bronze Medals":>20}"))- 1                    
             else:
-                line.append(fcontents)
-    with open()
+                fcontents.append(line)
+    with open(countrylog, mode="w", encoding="UTF-8")
 intro subroutine
 def intro():
     repeat = "y"
