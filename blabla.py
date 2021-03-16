@@ -53,7 +53,7 @@ def addcountrylog():
 def viewcountrylog():
     with open(countrylog, "r") as f:
         for line in f:
-            print(line, end="")
+            print(line, end=' ')
 #allows user to search for countries by different data types in countryLog.txt
 def searchcountrylog():
     try:
@@ -91,7 +91,7 @@ def editcountrylog():
             else:
                 fcontents.append(line)
     with open(countrylog, mode="w", encoding="UTF-8") as f:
-        
+
 intro subroutine
 def intro():
     repeat = "y"
