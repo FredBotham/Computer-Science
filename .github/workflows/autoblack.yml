@@ -15,7 +15,7 @@ jobs:
         run: black --check .
       - name: If needed, commit black changes to the pull request
         if: failure()
-        run:
+        run: |
           black .
           git config --global user.name 'autoblack'
           git config --global user.email 'cclauss@users.noreply.github.com'
