@@ -1,1 +1,1 @@
-file_put_contents('/tmp/payload.json', json_encode($_POST));
+file_put_contents('/tmp/payload.log', json_encode($_POST));
