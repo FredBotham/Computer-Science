@@ -113,6 +113,7 @@ def editcountrylog():
             data = line.split("|")
             try:
                 if data[0] == select:
+                    foundselection = line.split("|")
                     print(
                         f"Country selected: {data[0]}, Current Data:\n Team Captain: {data[1]} \n Medals: {data[2]} Gold{data[3]} Silver {data[4]} Bronze \n Total Medals: {data[5]}"
                     )
@@ -124,14 +125,18 @@ def editcountrylog():
                             )
                         )
                         listselect = editselect - 1
-                        edit = data[listselect]
                 else:
                     fcontents.append(line)
             except:
                 print("OH NO, WE DID A POOPSIE. SOMETHING WENT WRONG")
     try:
         with open(countrylog, mode="w", encoding="UTF-8") as f:
+            foundselection[listselect] = input("Please enter the new value for your selection: ")
             for line in fcontents:
+                if line.split("|") == foundselection:
+                    fcontents.remove(line)
+                    fcontents.append("|".join(foundselection))
+
     except:
         print("O NO!")
     finally:
