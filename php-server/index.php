@@ -1,1 +1,1 @@
-echo('oi oi')
+file_put_contents('/tmp/hookpayload.json', json_encode($_POST));
