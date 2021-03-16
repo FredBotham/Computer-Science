@@ -90,7 +90,8 @@ def editcountrylog():
                     editselect = int(input(f"Available fields to edit: \n1: {"Country Name":>20}\n2: {"Team Captain":>20}\n3: {"Gold Medals":>20}\n4: {"Silver Medals":>20}\n5: {"Bronze Medals":>20}"))- 1                    
             else:
                 fcontents.append(line)
-    with open(countrylog, mode="w", encoding="UTF-8")
+    with open(countrylog, mode="w", encoding="UTF-8") as f:
+        
 intro subroutine
 def intro():
     repeat = "y"
