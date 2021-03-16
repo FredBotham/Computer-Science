@@ -131,7 +131,9 @@ def editcountrylog():
                 print("OH NO, WE DID A POOPSIE. SOMETHING WENT WRONG")
     try:
         with open(countrylog, mode="w", encoding="UTF-8") as f:
-            foundselection[listselect] = input("Please enter the new value for your selection: ")
+            foundselection[listselect] = input(
+                "Please enter the new value for your selection: "
+            )
             for line in fcontents:
                 if line.split("|") == foundselection:
                     fcontents.remove(line)
@@ -140,8 +142,7 @@ def editcountrylog():
     except:
         print("O NO!")
     finally:
-        print("OK COOL DUDE")        
-                
+        print("OK COOL DUDE")
 
 
 # intro subroutine
