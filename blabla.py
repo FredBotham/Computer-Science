@@ -111,23 +111,32 @@ def editcountrylog():
     with open(countrylog, mode="r", encoding="UTF-8") as f:
         for line in f:
             data = line.split("|")
-            if data[0] == select:
-                print(
-                    f"Country selected: {data[0]}, Current Data:\n Team Captain: {data[1]} \n Medals: {data[2]} Gold{data[3]} Silver {data[4]} Bronze \n Total Medals: {data[5]}"
-                )
-                editselect = "y"
-                while editselect != "n":
-                    editselect = int(
-                        input(
-                            f'Available fields to edit: \n1: {"Country Name":>20} \n2: {"Team Captain":>20} \n3: {"Gold Medals":>20} \n4: {"Silver Medals":>20} \n5: {"Bronze Medals":>20} \n'
-                        )
+            try:
+                if data[0] == select:
+                    print(
+                        f"Country selected: {data[0]}, Current Data:\n Team Captain: {data[1]} \n Medals: {data[2]} Gold{data[3]} Silver {data[4]} Bronze \n Total Medals: {data[5]}"
                     )
-                    listselect = editselect - 1
-            else:
-                fcontents.append(line)
-    with open(countrylog, mode="w", encoding="UTF-8") as f:
-        for line in fcontents:
-            f.write(f"{line} \n")
+                    editselect = "y"
+                    while editselect != "n":
+                        editselect = int(
+                            input(
+                                f'Available fields to edit: \n1: {"Country Name":>20} \n2: {"Team Captain":>20} \n3: {"Gold Medals":>20} \n4: {"Silver Medals":>20} \n5: {"Bronze Medals":>20} \n Please enter what you would like to edit'
+                            )
+                        )
+                        listselect = editselect - 1
+                        edit = data[listselect]
+                else:
+                    fcontents.append(line)
+            except:
+                print("OH NO, WE DID A POOPSIE. SOMETHING WENT WRONG")
+    try:
+        with open(countrylog, mode="w", encoding="UTF-8") as f:
+            for line in fcontents:
+    except:
+        print("O NO!")
+    finally:
+        print("OK COOL DUDE")        
+                
 
 
 # intro subroutine
