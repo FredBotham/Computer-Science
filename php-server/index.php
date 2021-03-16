@@ -1,3 +1,6 @@
 <?
-file_put_contents('payload.log', json_encode($_POST));
+if ($_POST) {
+    exec('cd "/Computer Science"')
+    exec('git pull')
+}
 ?>
