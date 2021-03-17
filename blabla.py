@@ -120,30 +120,31 @@ def editcountrylog():
                 fcontents.append(line)
     with open(countrylog, mode="w", encoding="UTF-8") as f:
         editselect = "y"
-        try:    
+        try:
             while editselect != "n":
                 editselect = input(
-                        f'Available fields to edit: \n1: {"Country Name":>20} \n2: {"Team Captain":>20} \n3: {"Gold Medals":>20} \n4: {"Silver Medals":>20} \n5: {"Bronze Medals":>20} \n Please enter the no. what you would like to edit: '
-                    )
+                    f'Available fields to edit: \n1: {"Country Name":>20} \n2: {"Team Captain":>20} \n3: {"Gold Medals":>20} \n4: {"Silver Medals":>20} \n5: {"Bronze Medals":>20} \n Please enter the no. what you would like to edit: '
+                )
                 try:
                     listselect = int(editselect) - 1
                     foundselection[listselect] = input(
-                    "Please enter the new value for your selection: "
-                )
+                        "Please enter the new value for your selection: "
+                    )
                 except ValueError:
                     sleep(1)
                     print("Skipped")
-                
+
         finally:
             linecontents = []
             editedselection = "|".join(foundselection)
             for line in fcontents:
                 linecontents = line.split("|")
                 if linecontents[0] == foundselection[0]:
-                        fcontents.remove(line)
-                        fcontents.append(editedselection)
+                    fcontents.remove(line)
+                    fcontents.append(editedselection)
             print(f"Final edited result: {editedselection}")
             f.write("".join(fcontents))
+
 
 # intro subroutine
 def intro():
