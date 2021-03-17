@@ -140,8 +140,7 @@ def editcountrylog():
             for line in fcontents:
                 linecontents = line.split("|")
                 if linecontents[0] == foundselection[0]:
-                    fcontents.remove(line)
-                    fcontents.append(editedselection)
+                    fcontents[line] = editedselection
             print(f"Final edited result: {editedselection}")
             f.write("".join(fcontents))
 
