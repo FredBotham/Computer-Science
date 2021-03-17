@@ -111,39 +111,39 @@ def editcountrylog():
     with open(countrylog, mode="r", encoding="UTF-8") as f:
         for line in f:
             data = line.split("|")
-            try:
-                if data[0] == select:
-                    foundselection = line.split("|")
-                    print(
-                        f"Country selected: {data[0]}, Current Data:\n Team Captain: {data[1]} \n Medals: {data[2]} Gold{data[3]} Silver {data[4]} Bronze \n Total Medals: {data[5]}"
+            if data[0] == select:
+                foundselection = line.split("|")
+                print(
+                    f"Country selected: {data[0]}, Current Data:\n Team Captain: {data[1]} \n Medals: {data[2]} Gold{data[3]} Silver {data[4]} Bronze \n Total Medals: {data[5]}"
+                )
+            else:
+                fcontents.append(line)
+    with open(countrylog, mode="w", encoding="UTF-8") as f:
+        editselect = "y"
+        try:    
+            while editselect != "n":
+                editselect = input(
+                        f'Available fields to edit: \n1: {"Country Name":>20} \n2: {"Team Captain":>20} \n3: {"Gold Medals":>20} \n4: {"Silver Medals":>20} \n5: {"Bronze Medals":>20} \n Please enter the no. what you would like to edit: '
                     )
-                    editselect = "y"
-                    while editselect != "n":
-                        editselect = int(
-                            input(
-                                f'Available fields to edit: \n1: {"Country Name":>20} \n2: {"Team Captain":>20} \n3: {"Gold Medals":>20} \n4: {"Silver Medals":>20} \n5: {"Bronze Medals":>20} \n Please enter what you would like to edit'
-                            )
-                        )
-                        listselect = editselect - 1
-                else:
-                    fcontents.append(line)
-            except:
-                print("OH NO, WE DID A POOPSIE. SOMETHING WENT WRONG")
-    try:
-        with open(countrylog, mode="w", encoding="UTF-8") as f:
-            foundselection[listselect] = input(
-                "Please enter the new value for your selection: "
-            )
+                try:
+                    listselect = int(editselect) - 1
+                    foundselection[listselect] = input(
+                    "Please enter the new value for your selection: "
+                )
+                except ValueError:
+                    sleep(1)
+                    print("Skipped")
+                
+        finally:
+            linecontents = []
+            editedselection = "|".join(foundselection)
             for line in fcontents:
-                if line.split("|") == foundselection:
-                    fcontents.remove(line)
-                    fcontents.append("|".join(foundselection))
-
-    except:
-        print("O NO!")
-    finally:
-        print("OK COOL DUDE")
-
+                linecontents = line.split("|")
+                if linecontents[0] == foundselection[0]:
+                        fcontents.remove(line)
+                        fcontents.append(editedselection)
+            print(f"Final edited result: {editedselection}")
+            f.write("".join(fcontents))
 
 # intro subroutine
 def intro():
