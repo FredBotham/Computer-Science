@@ -24,8 +24,7 @@ def bin2den():
     print("Selection: Binary to Denary")
     binlist = []
     placevlist = []
-    binin = str(input("Please enter binary value to convert: ")).replace(
-        " ", "")
+    binin = str(input("Please enter binary value to convert: ")).replace(" ", "")
     denout = []
     placev = len(binin) - 1
     for char in binin:
@@ -33,7 +32,7 @@ def bin2den():
         placevlist.append(placev)
         placev -= 1
     for i in range(0, len(placevlist), 1):
-        denout.append(int((binlist[i] * (2**placevlist[i]))))
+        denout.append(int((binlist[i] * (2 ** placevlist[i]))))
     print("Your binary number converted is: {}! ".format(sum(denout)))
 
 
@@ -69,9 +68,8 @@ def den2hex():
             hexlist.append(num % 16)
 
     decin = int(
-        input(
-            "Please enter the base 10 integer you would like to be converted: "
-        ))
+        input("Please enter the base 10 integer you would like to be converted: ")
+    )
     d2h(decin)
     convertlist = [hexstr[x - 10] if x >= 10 else x for x in hexlist]
     finallist = [str(i) for i in convertlist]
@@ -89,8 +87,7 @@ def hex2den():
 # filesize calculator function
 def filesize():
     print("Selection: Image File Size Calculator")
-    bitdepth = int(
-        input("Please enter bit depth of the image e.g. 1, 8, 16 bit: "))
+    bitdepth = int(input("Please enter bit depth of the image e.g. 1, 8, 16 bit: "))
     width = int(input("Please enter the width of the image(px): "))
     height = int(input("Please enter the height of the image(px): "))
     print("Thank You. Processing...")
@@ -101,13 +98,15 @@ def filesize():
     mb = btes / 1000000
     sleep(1)
     print(
-        "COMPLETE! IMAGE STATS:\n Resolution: {} \n Bitrate: {} \n Size in Bytes: {}B \n Size in KiloBytes: {}KB\n Size in MegaBytes: {}MB"
-        .format(res, bitrate, btes, kb, mb))
+        "COMPLETE! IMAGE STATS:\n Resolution: {} \n Bitrate: {} \n Size in Bytes: {}B \n Size in KiloBytes: {}KB\n Size in MegaBytes: {}MB".format(
+            res, bitrate, btes, kb, mb
+        )
+    )
 
 
-headstring = ("=" * 20 +
-              "Binary, Hexadecimal, Image File Size Calculator".upper() +
-              "=" * 20)
+headstring = (
+    "=" * 20 + "Binary, Hexadecimal, Image File Size Calculator".upper() + "=" * 20
+)
 
 
 # header and menu function
@@ -117,8 +116,10 @@ def menu(header):
     print("Getting available functions... ")
     sleep(1)
     print(
-        "\nBinary To Denary Conversion {}1 \nDenary to Binary Conversion {}2 \nDenary to Hexadecimal Conversion {}3 \nHexadecimal to Denary Conversion {}4 \nImage file size calculator{}5"
-        .format("." * 11, "." * 11, "." * 6, "." * 6, "." * 13))
+        "\nBinary To Denary Conversion {}1 \nDenary to Binary Conversion {}2 \nDenary to Hexadecimal Conversion {}3 \nHexadecimal to Denary Conversion {}4 \nImage file size calculator{}5".format(
+            "." * 11, "." * 11, "." * 6, "." * 6, "." * 13
+        )
+    )
     function = int(input("Please select an option [1-5] "))
     if function >= 1 and function <= 5:
         eval(functionDict.get(function) + "()")

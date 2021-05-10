@@ -3,12 +3,7 @@ import datetime
 from time import sleep
 
 keys = {1: 0, 2: 1, 3: 5, 4: 3}
-terms = {
-    1: "Country Name",
-    2: "Team Captain",
-    3: "Total Medals",
-    4: "Minimum Golds"
-}
+terms = {1: "Country Name", 2: "Team Captain", 3: "Total Medals", 4: "Minimum Golds"}
 # events dictionary with date and time assigned for each
 events = {
     "Opening Ceremony": datetime.datetime(2020, 7, 24, 20, 00),
@@ -62,7 +57,7 @@ def addcountrylog():
         str(medals.get("gold")),
         str(medals.get("silver")),
         str(medals.get("bronze")),
-        str(totalMedals)
+        str(totalMedals),
     ]
     with open(countrylog, mode="a", encoding="UTF-8") as f:
         f.write("|".join(varList) + "\r\n")
@@ -73,7 +68,7 @@ def viewcountrylog():
     with open(countrylog, "r") as f:
         data = f.readlines()
         for line in data:
-          print(f'{"Team Captain":<}')
+            print(f'{"Team Captain":<}')
 
 
 # allows user to search for countries by different data types in countryLog.txt
@@ -82,11 +77,13 @@ def searchcountrylog():
         search = int(
             input(
                 f"What would you like to search by: \n1: {'Country Name':}\n 2: {'Current Team Captain':}\n 3: {'Total Medals':}\n 4: {'Minimum gold medals ':}\n Enter no. selection: "
-            ))
+            )
+        )
         keyword = str(
             input(
                 f"Your Selection: {terms.get(search)}, please enter the {terms.get(search)} to search for: "
-            ))
+            )
+        )
         Found = False
     except:
         print("You've entered something wrong, sorry.")
@@ -113,8 +110,7 @@ def editcountrylog():
     fcontents = []
     sleep(2)
     viewcountrylog()
-    select = input(
-        "Please enter the name of the country you would like to edit: ")
+    select = input("Please enter the name of the country you would like to edit: ")
     with open(countrylog, mode="r", encoding="UTF-8") as f:
         for line in f:
             data = line.split("|")
@@ -135,7 +131,8 @@ def editcountrylog():
                 try:
                     listselect = int(editselect) - 1
                     foundselection[listselect] = input(
-                        "Please enter the new value for your selection: ")
+                        "Please enter the new value for your selection: "
+                    )
                 except ValueError:
                     sleep(1)
                     print("Skipped")
@@ -150,14 +147,17 @@ def editcountrylog():
             print(f"Final edited result: {editedselection}")
             f.write("".join(fcontents))
 
-selections = {1: "Golds", 2:"Silvers", 3:"Bronzes"}
+
+selections = {1: "Golds", 2: "Silvers", 3: "Bronzes"}
+
+
 def sortcountrylog():
-  file = open(countrylog, mode="r", encoding="UTF-8").readlines()
-  #sortkey = int(input(f'Would you like to sort by: \n 1:{"Gold Medals":>5}\n 2:{"Silver Medals":>5}\n 3:{"Bronze Medals":>5}\n Please enter the number: '))
-  #sortf = sorted(file, key=lambda line: float(line.split('|')[sortkey+2]), reverse=False)
-  #print(f'Your log file sorted by {selections.get(sortkey)}: {sortf}')
-  print(file[1])
-        
+    file = open(countrylog, mode="r", encoding="UTF-8").readlines()
+    # sortkey = int(input(f'Would you like to sort by: \n 1:{"Gold Medals":>5}\n 2:{"Silver Medals":>5}\n 3:{"Bronze Medals":>5}\n Please enter the number: '))
+    # sortf = sorted(file, key=lambda line: float(line.split('|')[sortkey+2]), reverse=False)
+    # print(f'Your log file sorted by {selections.get(sortkey)}: {sortf}')
+    print(file[1])
+
 
 # intro subroutine
 def intro():
@@ -168,8 +168,7 @@ def intro():
     print(h3.center(width))
     sleep(1)
     # display name for log
-    currentUname = input(
-        "Please enter a username to identify yourself in the log: ")
+    currentUname = input("Please enter a username to identify yourself in the log: ")
     # using function to write name and time to log file
     writeaccesslog(currentUname)
     print("Thank you, logged successfully.\n")
@@ -181,10 +180,10 @@ def intro():
     while repeat != "n":
         print(f"Your selection: {repeat}.")
         sleep(1)
-        #try:
+        # try:
         eval(repeat.lower() + "countrylog" + "()")
-        #except:
-            #print(f"INVALID SELECTION MADE: {repeat}")
+        # except:
+        # print(f"INVALID SELECTION MADE: {repeat}")
         repeat = input(
             "Would you like to ADD, SEARCH, EDIT, SORT or VIEW another country(type as shown, n to skip)? "
         )
@@ -203,4 +202,3 @@ def intro():
 
 
 intro()
-
