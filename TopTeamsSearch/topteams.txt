@@ -1,0 +1,5 @@
+Manchester City,Etihad Stadium,Sergio Aguero,The Citizens,55000,
+Everton,Goodison Park,Dominic Calvert-Lewin,The Toffees,39800,
+Tottenham,White Hart Lane,Kane,Spurs,62000,
+Ipswich,Portman Road,John Wark,Blues,32000,
+Swansea City, Liberty Stadium, Connor Roberts, The Swans,29000,
